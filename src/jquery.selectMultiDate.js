@@ -25,144 +25,145 @@
 
     self.keypress = null;
     
-    $(function() {
+  
+    // On s'abbonne aux events du clavier
+    //
+    if (self.options.enabledShortcuts == true) {
+      $('body').keydown(function(e) {
+        self.keypress = e.ctrlKey | e.keyCode == 91 ? 'CTRL' 
+        : e.altKey ? 'ALT' 
+        : e.shiftKey ? 'SHIFT' : e.keyCode;
+      });
       
-      // On s'abbonne aux events du clavier
-      //
-      if (self.options.enabledShortcuts == true) {
-        $('body').keydown(function(e) {
-          self.keypress = e.ctrlKey | e.keyCode == 91 ? 'CTRL' 
-          : e.altKey ? 'ALT' 
-          : e.shiftKey ? 'SHIFT' : e.keyCode;
-        });
+      $('body').keyup(function(e) {
+        self.keypress = null;
+      });
+    }
       
-        $('body').keyup(function(e) {
-          self.keypress = null;
-        });
+    // Création du textext 
+    //
+    self.$textext_html = $('<textarea rows="1" class="select-multi-date"></textarea>');
+    self.$elements.append(self.$textext_html);
+    self.$textext_html.textext({
+      plugins: 'tags arrow'
+    });
+    self.$textext = self.$textext_html.textext()[0];
+    self.$textext.bind('isTagAllowed', function(e, data) {
+      var tag = data.tag;
+      var motif = tag.split('/');
+      if (motif.length != 3 || tag.length != 10) {
+        data.result = false;
+        return
       }
-      
-      // Création du textext 
-      //
-      self.$textext_html = $('<textarea rows="1" class="select-multi-date"></textarea>');
-      self.$elements.append(self.$textext_html);
-      self.$textext_html.textext({
-        plugins: 'tags arrow'
-      });
-      self.$textext = self.$textext_html.textext()[0];
-      self.$textext.bind('isTagAllowed', function(e, data) {
-        var tag = data.tag;
-        var motif = tag.split('/');
-        if (motif.length != 3 || tag.length != 10) {
-          data.result = false;
-          return
-        }
 
-        var date = $.datepicker.parseDate(self.options.dateFormat, tag);
+      var date = $.datepicker.parseDate(self.options.dateFormat, tag);
 
-        if (date_is_forbidden.call(self, date) == true) {
-          data.result = false;
-          return;
-        }
+      if (date_is_forbidden.call(self, date) == true) {
+        data.result = false;
+        return;
+      }
         
-        if (can_add.call(self) == false && in_array(date, self.selectedDates) == false) {
-          data.result = false;
-          return;
-        }
+      if (can_add.call(self) == false && in_array(date, self.selectedDates) == false) {
+        data.result = false;
+        return;
+      }
         
-      });
-      self.$textext.arrow().onArrowClick = function(e) {
-        self.$datepicker.toggle();
-      };
+    });
+    self.$textext.arrow().onArrowClick = function(e) {
+      self.$datepicker.toggle();
+    };
       
-      // Création du datepicker
-      //
-      var options_datepicker = $.datepicker.regional[self.options.culture];
-      options_datepicker.dateFormat = self.options.dateFormat;
-      options_datepicker.showButtonPanel = false;    
-      options_datepicker.beforeShowDay = function(date) {
-        if (date_is_forbidden.call(self, date) == true) {
-          return [false];
-        }
+    // Création du datepicker
+    //
+    var options_datepicker;
+    if (self.options.culture !== null) {
+      options_datepicker = $.datepicker.regional[self.options.culture];
+    }
+    options_datepicker.dateFormat = self.options.dateFormat;
+    options_datepicker.showButtonPanel = false;    
+    options_datepicker.beforeShowDay = function(date) {
+      if (date_is_forbidden.call(self, date) == true) {
+        return [false];
+      }
 
-        if (in_array(date, self.selectedDates) != false) {
-          return [true, 'ui-state-active'];
+      if (in_array(date, self.selectedDates) != false) {
+        return [true, 'ui-state-active'];
+      } else {
+        return [true, 'ui-state-default'];
+      }
+    };
+      
+      
+    // Selection d'une date
+    //
+    options_datepicker.onSelect = function(dateText, inst) {
+      var date = self.$datepicker.datepicker('getDate');
+
+      if (in_array(date, self.selectedDates) == false) {
+        // Click
+        if (self.keypress == 'ALT') {
+          var dates = week_of_date(date);
+          self.addDates(dates, true);
+        } else if (self.keypress == 'SHIFT') {
+          var dates = month_of_date(date);
+          self.addDates(dates, true);
+        } else if (self.keypress == 'CTRL') {
+          var dates = same_day_of_date_in_month(date);
+          self.addDates(dates, true);
         } else {
-          return [true, 'ui-state-default'];
+          self.addDate(date);
         }
-      };
-      
-      
-      // Selection d'une date
-      //
-      options_datepicker.onSelect = function(dateText, inst) {
-        var date = self.$datepicker.datepicker('getDate');
-
-        if (in_array(date, self.selectedDates) == false) {
-          // Click
-          if (self.keypress == 'ALT') {
-            var dates = week_of_date(date);
-            self.addDates(dates, true);
-          } else if (self.keypress == 'SHIFT') {
-            var dates = month_of_date(date);
-            self.addDates(dates, true);
-          } else if (self.keypress == 'CTRL') {
-            var dates = same_day_of_date_in_month(date);
-            self.addDates(dates, true);
-          } else {
-            self.addDate(date);
-          }
           
+      } else {
+        // Unclick
+        if (self.keypress === 'ALT') {
+          var dates = week_of_date(date);
+          self.removeDates(dates, true);
+        } else if (self.keypress == 'SHIFT') {
+          var dates = month_of_date(date);
+          self.removeDates(dates, true);
+        } else if (self.keypress == 'CTRL') {
+          var dates = same_day_of_date_in_month(date);
+          self.removeDates(dates, true);
         } else {
-          // Unclick
-          if (self.keypress === 'ALT') {
-            var dates = week_of_date(date);
-            self.removeDates(dates, true);
-          } else if (self.keypress == 'SHIFT') {
-            var dates = month_of_date(date);
-            self.removeDates(dates, true);
-          } else if (self.keypress == 'CTRL') {
-            var dates = same_day_of_date_in_month(date);
-            self.removeDates(dates, true);
-          } else {
-            self.removeDate(date);
-          }
+          self.removeDate(date);
         }
-      };
+      }
+    };
       
-      self.$datepicker = $('<div></div>');
-      self.$elements.append(self.$datepicker);
-      self.$datepicker.datepicker(options_datepicker);
-      self.$datepicker.hide();
+    self.$datepicker = $('<div></div>');
+    self.$elements.append(self.$datepicker);
+    self.$datepicker.datepicker(options_datepicker);
+    self.$datepicker.hide();
       
-      // Ajout/Suppression d'item
-      //
-      self.$textext.bind('setFormData', function(e, data, isEmpty){
+    // Ajout/Suppression d'item
+    //
+    self.$textext.bind('setFormData', function(e, data, isEmpty){
 
-        var inFormData = [];
-        $.each(data, function(key, value) {
-          var date = $.datepicker.parseDate(self.options.dateFormat, value);
-          inFormData.push(date);
-        });
-
-        var toAdd = $.map(inFormData, function(val, index) {
-          if (in_array(val, self.selectedDates) == false) {
-            return val;
-          } else {
-            return null;
-          }
-        });
-        
-        var toRemove = $.map(self.selectedDates, function(val, index) {
-          if (in_array(val, inFormData) == false) {
-            return val;
-          } else {
-            return null;
-          }
-        });
-        
-        self.addDates(toAdd, false);
-        self.removeDates(toRemove, false);
+      var inFormData = [];
+      $.each(data, function(key, value) {
+        var date = $.datepicker.parseDate(self.options.dateFormat, value);
+        inFormData.push(date);
       });
+
+      var toAdd = $.map(inFormData, function(val, index) {
+        if (in_array(val, self.selectedDates) == false) {
+          return val;
+        } else {
+          return null;
+        }
+      });
+        
+      var toRemove = $.map(self.selectedDates, function(val, index) {
+        if (in_array(val, inFormData) == false) {
+          return val;
+        } else {
+          return null;
+        }
+      });
+        
+      self.addDates(toAdd, false);
+      self.removeDates(toRemove, false);
     });
   };
   
@@ -446,7 +447,7 @@
   }
   
   $.fn.selectMultiDate.defaults = {
-    culture:          'en',
+    culture:          null,
     // Langue du calendrier
     
     dateFormat:       'dd/mm/yy',
