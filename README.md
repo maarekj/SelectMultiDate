@@ -23,7 +23,7 @@ Utilisation:
     <div id="multi-date"></div>
     <script>
       $(function() {
-        $('#multi-date').multiDate({
+        $('#multi-date').selectMultiDate({
           culture:            'en',
           dateFormat:         'dd/mm/yy',
           maxDate:            0,
@@ -37,6 +37,6 @@ Utilisation:
         .bind('clear', function(e, date) {
           console.log(date);
         })
-        .multiDate('addDates', ['2012-04-06', '2012-06-19'])
+        .selectMultiDate('addDates', ['2012-04-06', '2012-06-19'])
        });
      </script>
