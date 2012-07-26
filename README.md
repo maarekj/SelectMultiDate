@@ -24,7 +24,7 @@ Utilisation:
     <script>
       $(function() {
         $('#multi-date').selectMultiDate({
-          culture:            'en',
+          culture:            'fr',
           dateFormat:         'dd/mm/yy',
           maxDate:            0,
           enabledShortcuts:   true,
