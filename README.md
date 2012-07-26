@@ -40,5 +40,3 @@ Utilisation:
         .multiDate('addDates', ['2012-04-06', '2012-06-19'])
        });
      </script>
-
-
