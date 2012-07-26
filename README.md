@@ -54,7 +54,7 @@ Documentation:
 
 Utilisation:
 --------------------------------------------------------------------------------
-```javascript
+```html
     <div id="multi-date"></div>
     <script>
       $(function() {
