@@ -14,8 +14,8 @@
     <script src="vendor/jquery-ui-1.7.3/i18n/jquery-ui-i18n.js"></script>
     <script src="vendor/textext-1.3.0/jquery.textext-1.3.0.min.js"></script>
     <script src="src/jquery.selectMultiDate.js"></script>
-    
-    
+
+
     <title>Selectmultidate</title>
   </head>
 
@@ -39,73 +39,112 @@
     <!-- MAIN CONTENT -->
     <div id="main_content_wrap" class="outer">
       <section id="main_content" class="inner">
-        <h1>SelectMultiDate</h1>
+        <article class="markdown-body entry-content" itemprop="mainContentOfPage"><h1>
+            <a name="selectmultidate" class="anchor" href="#selectmultidate"><span class="mini-icon mini-icon-link"></span></a>SelectMultiDate</h1>
 
-        <p>Plugin jQuery qui permet de sélectionner plusieurs dates à l'aide d'un datepicker
-          <a href="http://maarekj.github.com/SelectMultiDate/">http://maarekj.github.com/SelectMultiDate/</a></p>
+          <p>Plugin jQuery qui permet de sélectionner plusieurs dates à l'aide d'un datepicker
+            <a href="http://maarekj.github.com/SelectMultiDate/">http://maarekj.github.com/SelectMultiDate/</a></p>
 
-        <h2>Auteur</h2>
+          <h2>
+            <a name="auteur" class="anchor" href="#auteur"><span class="mini-icon mini-icon-link"></span></a>Auteur</h2>
 
-        <p>Joseph Maarek</p>
+          <p>Joseph Maarek</p>
 
-        <h2>Infomations connexes:</h2>
+          <h2>
+            <a name="infomations-connexes" class="anchor" href="#infomations-connexes"><span class="mini-icon mini-icon-link"></span></a>Infomations connexes:</h2>
 
-        <p>Ce plugin utilise est un plugin jQuery (1.7.1). Il utilise le datepicker 
-          jQueryUI (1.8.16), et le plugin jquery.textext-1.3.0.
-          Ainsi qu'un thême customiser trouver sur le net de jQueryUI (avec
-          quelques ajouts pour les dates sélectionnées)</p>
+          <p>Ce plugin utilise est un plugin jQuery (1.7.1). Il utilise le datepicker 
+            jQueryUI (1.8.16), et le plugin jquery.textext-1.3.0.
+            Ainsi qu'un thême customiser trouver sur le net de jQueryUI (avec
+            quelques ajouts pour les dates sélectionnées)</p>
 
-        <ul>
-          <li><a href="http://docs.jquery.com/Main_Page">Doc de jQuery</a></li>
-          <li><a href="http://www.jquery.info/spip.php?article92">Tuto pour faire un plugin jQuery</a></li>
-          <li><a href="http://textextjs.com/">Doc de jquery.textext</a></li>
-        </ul>
+          <ul>
+            <li><a href="http://docs.jquery.com/Main_Page">Doc de jQuery</a></li>
+            <li><a href="http://www.jquery.info/spip.php?article92">Tuto pour faire un plugin jQuery</a></li>
+            <li><a href="http://textextjs.com/">Doc de jquery.textext</a></li>
+          </ul><h2>
+            <a name="exemples" class="anchor" href="#exemples"><span class="mini-icon mini-icon-link"></span></a>Exemples:</h2>
 
-        <h2>Exemples:</h2>
-        <div id="multi-date"></div>
-        <script>
-          jQuery(function($) {
-            $('#multi-date').selectMultiDate({
-              culture:            'fr',
-              dateFormat:         'dd/mm/yy',
-              maxDate:            0,
-              enabledShortcuts:   true,
-              disabledDayOfWeek:  [0, 6],
-              disabledDates:      ['2012-07-14', '2012-08-05'],
-            })
-            .on('addedDate', function(e, date) {
-              console.log(date);
-            })
-            .on('clear', function(e, date) {
-              console.log(date);
-            })
-            .selectMultiDate('addDates', ['2012-04-06', '2012-06-19']);
-          });
-        </script>
+          <p><a href="http://maarekj.github.com/SelectMultiDate/demos">Voir un exemple</a></p>
 
-        <h2>Utilisation:</h2>
+          <h2>
+            <a name="documentation" class="anchor" href="#documentation"><span class="mini-icon mini-icon-link"></span></a>Documentation:</h2>
 
-        <pre><code>&lt;div id="multi-date"&gt;&lt;/div&gt;
-&lt;script&gt;
-  jQuery(function($) {
-    $('#multi-date').selectMultiDate({
-      culture:            'fr',
-      dateFormat:         'dd/mm/yy',
-      maxDate:            0,
-      enabledShortcuts:   true,
-      disabledDayOfWeek:  [0, 6],
-      disabledDates:      ['2012-07-14', '2012-08-05']
-    })
-    .on('addedDate', function(e, date) {
-      console.log(date);
-    })
-    .on('clear', function(e, date) {
-      console.log(date);
-    })
-    .selectMultiDate('addDates', ['2012-04-06', '2012-06-19'])
-   });
- &lt;/script&gt;
-</code></pre>
+          <h3>
+            <a name="options" class="anchor" href="#options"><span class="mini-icon mini-icon-link"></span></a>Options</h3>
+
+          <ul>
+            <li>
+              <strong>culture</strong>:            Possibilité de choisir la culture du widget</li>
+            <li>
+              <strong>dateFormat</strong>:         Possibilité de choisir le format d'affichage</li>
+            <li>
+              <strong>maxDate</strong>:            Possibilité de limité le nombre de date selectionnable</li>
+            <li>
+              <strong>enabledShortcuts</strong>:   Active les raccourcies clavier:
+
+              <ul>
+                <li>
+                  <em>Shift + Click</em> =&gt;    sélection/désélection du mois entier</li>
+                <li>
+                  <em>Alt + Click</em> =&gt;      sélection/désélection de la semaine entière</li>
+                <li>
+                  <em>Cmd/Ctrl</em> =&gt;         sélection/désélection de tout la colonne.</li>
+              </ul>
+            </li>
+            <li>
+              <strong>disabledDayOfWeek</strong>:  Désactive certaines jour de la semaine (un tableau 
+              contenant les jours à désactivé, par exemple [0, 6] désactivera le dimanche
+              et le lundi).</li>
+            <li>
+              <strong>disabledDates</strong>:      Désactive certaines dates précises, exemple:
+              <em>['2012-07-14', '2012-08-05']</em>
+            </li>
+          </ul><h3>
+            <a name="events" class="anchor" href="#events"><span class="mini-icon mini-icon-link"></span></a>Events</h3>
+
+          <ul>
+            <li>
+              <strong>addedDate</strong>:          Quand une date est séléctionnée</li>
+            <li>
+              <strong>removedDate</strong>:        Quand une date est supprimée.</li>
+            <li>
+              <strong>cleared</strong>:            Quand le widget est vidé via la fonction clear.</li>
+          </ul><h3>
+            <a name="functions" class="anchor" href="#functions"><span class="mini-icon mini-icon-link"></span></a>Functions</h3>
+
+          <ul>
+            <li>
+              <strong>addDates</strong>:           Ajouter plusieurs dates.</li>
+            <li>
+              <strong>removeDates</strong>:        Supprimer plusieurs dates.</li>
+            <li>
+              <strong>refresh</strong>:            Met à jour le calendrier.</li>
+            <li>
+              <strong>getDates</strong>:           Recupèrer les dates séléctionnées.</li>
+            <li>
+              <strong>clear</strong>:              Vide le widget.</li>
+          </ul><h2>
+            <a name="utilisation" class="anchor" href="#utilisation"><span class="mini-icon mini-icon-link"></span></a>Utilisation:</h2>
+
+          <div class="highlight"><pre>    <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"multi-date"</span><span class="nt">&gt;&lt;/div&gt;</span>
+    <span class="nt">&lt;script&gt;</span>
+      <span class="nx">$</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span><span class="err">&nbsp;</span><span class="p">{</span>
+        <span class="nx">$</span><span class="p">(</span><span class="s1">'#multi-date'</span><span class="p">).</span><span class="nx">selectMultiDate</span><span class="p">({</span>
+          <span class="nx">culture</span><span class="o">:</span>            <span class="s1">'fr'</span><span class="p">,</span>
+          <span class="nx">dateFormat</span><span class="o">:</span>         <span class="s1">'dd/mm/yy'</span><span class="p">,</span>
+          <span class="nx">maxDate</span><span class="o">:</span>            <span class="mi">0</span><span class="p">,</span>
+          <span class="nx">enabledShortcuts</span><span class="o">:</span>   <span class="kc">true</span><span class="p">,</span>
+          <span class="nx">disabledDayOfWeek</span><span class="o">:</span>  <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span>
+          <span class="nx">disabledDates</span><span class="o">:</span>      <span class="p">[</span><span class="s1">'2012-07-14'</span><span class="p">,</span> <span class="s1">'2012-08-05'</span><span class="p">]</span>
+        <span class="p">})</span>
+        <span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">'addedDate'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">,</span> <span class="nx">date</span><span class="p">)</span> <span class="p">{</span>
+          <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">date</span><span class="p">);</span>
+        <span class="p">})</span>
+        <span class="p">.</span><span class="nx">selectMultiDate</span><span class="p">(</span><span class="s1">'addDates'</span><span class="p">,</span> <span class="p">[</span><span class="s1">'2012-04-06'</span><span class="p">,</span> <span class="s1">'2012-06-19'</span><span class="p">])</span>
+       <span class="p">});</span>
+     <span class="nt">&lt;/script&gt;</span>
+            </pre></div></article>
       </section>
     </div>
 
