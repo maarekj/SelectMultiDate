@@ -21,7 +21,7 @@ quelques ajouts pour les dates sélectionnées)
 
 Exemples:
 --------------------------------------------------------------------------------
-[Voir un exemple](http://maarekj.github.com/SelectMultiDate/#exemple1)
+[Voir un exemple](http://maarekj.github.com/SelectMultiDate/demos)
 
 Documentation:
 --------------------------------------------------------------------------------
