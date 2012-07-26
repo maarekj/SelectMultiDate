@@ -1,0 +1,68 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Twitter Bootstrap</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Demos jQuery plugin selectMultiDate">
+    <meta name="author" content="Maarek Joseph">
+
+    <!-- Le styles -->
+    <link href="http://twitter.github.com/bootstrap/assets/css/bootstrap.css" rel="stylesheet">
+    <link href="../vendor/jquery-ui-1.7.3/css/ui-lightness/jquery-ui-1.7.3.custom.css" rel="stylesheet">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    
+    <script src="../vendor/jquery-1.7.1/jquery-1.7.1.min.js"></script>
+    <script src="../vendor/jquery-ui-1.7.3/jquery-ui-1.7.3.min.js"></script>
+    <script src="../vendor/jquery-ui-1.7.3/i18n/jquery-ui-i18n.js"></script>
+    <script src="../vendor/textext-1.3.0/jquery.textext-1.3.0.min.js"></script>
+    <script src="../src/jquery.selectMultiDate.js"></script>
+  </head>
+
+  <body>
+
+    <div class="container">
+      <div class="row">
+        <div class="span12">
+          <form class="form-horizontal">
+            <fieldset>
+              <legend>SelectMultiDate</legend>
+              <div class="control-group">
+                <label class="control-label" for="input01">Select date(s)</label>
+                <div class="controls">
+                  <div id="multi-date"></div>
+                  <p class="help-block">yyyy-mm-dd</p>
+                  <script>
+                    jQuery(function($) {
+                      $('#multi-date').selectMultiDate({
+                        culture:            'fr',
+                        dateFormat:         'dd/mm/yy',
+                        maxDate:            0,
+                        enabledShortcuts:   true,
+                        disabledDayOfWeek:  [0, 6],
+                        disabledDates:      ['2012-07-14', '2012-08-05']
+                      })
+                      .bind('addedDate', function(e, date) {
+                        console.log(date);
+                      })
+                      .bind('clear', function(e, date) {
+                        console.log(date);
+                      })
+                      .selectMultiDate('addDates', ['2012-04-06', '2012-06-19'])
+                    });
+                  </script>
+                </div>
+              </div>
+            </fieldset>
+          </form>
+        </div>
+      </div>
+    </div>
+
+  </body>
+</html>
