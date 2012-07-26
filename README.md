@@ -19,6 +19,10 @@ quelques ajouts pour les dates sélectionnées)
 - [Tuto pour faire un plugin jQuery](http://www.jquery.info/spip.php?article92)
 - [Doc de jquery.textext](http://textextjs.com/)
 
+Exemples:
+---------------------
+[Voir un exemple](http://maarekj.github.com/SelectMultiDate/demos)
+
 Utilisation:
 ---------------------
     <div id="multi-date"></div>
