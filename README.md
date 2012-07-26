@@ -27,30 +27,30 @@ Documentation:
 --------------------------------------------------------------------------------
 ### Options ###
 
-- culture: Possibilité de choisir la culture du widget
-- dateFormat: Possibilité de choisir le format d'affichage
-- maxDate: Possibilité de limité le nombre de date selectionnable
-- enabledShortcuts: Active les raccourcies clavier:
-    - Shift + Click => sélection/désélection du mois entier
-    - Alt + Click => sélection/désélection de la semaine entière
-    - Cmd/Ctrl => sélection/désélection de tout la colonne.
-- disabledDayOfWeek: Désactive certaines jour de la semaine (un tableau 
+- __culture__:            Possibilité de choisir la culture du widget
+- __dateFormat__:         Possibilité de choisir le format d'affichage
+- __maxDate__:            Possibilité de limité le nombre de date selectionnable
+- __enabledShortcuts__:   Active les raccourcies clavier:
+    - _Shift + Click_ =>    sélection/désélection du mois entier
+    - _Alt + Click_ =>      sélection/désélection de la semaine entière
+    - _Cmd/Ctrl_ =>         sélection/désélection de tout la colonne.
+- __disabledDayOfWeek__:  Désactive certaines jour de la semaine (un tableau 
     contenant les jours à désactivé, par exemple [0, 6] désactivera le dimanche
     et le lundi).
-- disabledDates:  Désactive certaines dates précises, exemple:
-  ['2012-07-14', '2012-08-05']
+- __disabledDates__:      Désactive certaines dates précises, exemple:
+  _['2012-07-14', '2012-08-05']_
 
 ### Events ###
-- addedDate: Quand une date est séléctionnée
-- removedDate: Quand une date est supprimée.
-- cleared: Quand le widget est vidé via la fonction clear.
+- __addedDate__:          Quand une date est séléctionnée
+- __removedDate__:        Quand une date est supprimée.
+- __cleared__:            Quand le widget est vidé via la fonction clear.
 
 ### Functions ###
-- addDates: Ajouter plusieurs dates.
-- removeDates: Supprimer plusieurs dates.
-- refresh: Met à jour le calendrier.
-- getDates: Recupèrer les dates séléctionnées.
-- clear: Vide le widget.
+- __addDates__:           Ajouter plusieurs dates.
+- __removeDates__:        Supprimer plusieurs dates.
+- __refresh__:            Met à jour le calendrier.
+- __getDates__:           Recupèrer les dates séléctionnées.
+- __clear__:              Vide le widget.
 
 Utilisation:
 --------------------------------------------------------------------------------
