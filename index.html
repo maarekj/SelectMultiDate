@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8' />
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <meta name="description" content="Selectmultidate : Plugin jQuery qui permet de sélectionner plusieurs dates à l'aide d'un datepicker" />
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>Selectmultidate</title>
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/maarekj/SelectMultiDate">View on GitHub</a>
+
+          <h1 id="project_title">Selectmultidate</h1>
+          <h2 id="project_tagline">Plugin jQuery qui permet de sélectionner plusieurs dates à l'aide d'un datepicker</h2>
+
+            <section id="downloads">
+              <a class="zip_download_link" href="https://github.com/maarekj/SelectMultiDate/zipball/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/maarekj/SelectMultiDate/tarball/master">Download this project as a tar.gz file</a>
+            </section>
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <h1>SelectMultiDate</h1>
+
+<p>Plugin jQuery qui permet de sélectionner plusieurs dates à l'aide d'un datepicker
+<a href="http://maarekj.github.com/SelectMultiDate/">http://maarekj.github.com/SelectMultiDate/</a></p>
+
+<h2>Auteur</h2>
+
+<p>Joseph Maarek</p>
+
+<h2>Infomations connexes:</h2>
+
+<p>Ce plugin utilise est un plugin jQuery (1.7.1). Il utilise le datepicker 
+jQueryUI (1.8.16), et le plugin jquery.textext-1.3.0.
+Ainsi qu'un thême customiser trouver sur le net de jQueryUI (avec
+quelques ajouts pour les dates sélectionnées)</p>
+
+<ul>
+<li><a href="http://docs.jquery.com/Main_Page">Doc de jQuery</a></li>
+<li><a href="http://www.jquery.info/spip.php?article92">Tuto pour faire un plugin jQuery</a></li>
+<li><a href="http://textextjs.com/">Doc de jquery.textext</a></li>
+</ul><h2>Exemples:</h2>
+
+<p><a href="http://maarekj.github.com/SelectMultiDate/demos">Voir un exemple</a></p>
+
+<h2>Utilisation:</h2>
+
+<pre><code>&lt;div id="multi-date"&gt;&lt;/div&gt;
+&lt;script&gt;
+  $(function() {
+    $('#multi-date').selectMultiDate({
+      culture:            'fr',
+      dateFormat:         'dd/mm/yy',
+      maxDate:            0,
+      enabledShortcuts:   true,
+      disabledDayOfWeek:  [0, 6],
+      disabledDates:      ['2012-07-14', '2012-08-05']
+    })
+    .bind('addedDate', function(e, date) {
+      console.log(date);
+    })
+    .bind('clear', function(e, date) {
+      console.log(date);
+    })
+    .selectMultiDate('addDates', ['2012-04-06', '2012-06-19'])
+   });
+ &lt;/script&gt;
+</code></pre>
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">Selectmultidate maintained by <a href="https://github.com/maarekj">maarekj</a></p>
+        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
+    
+
+  </body>
+</html>
