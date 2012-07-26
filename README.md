@@ -2,6 +2,7 @@ SelectMultiDate
 =====================
 
 Plugin jQuery qui permet de sélectionner plusieurs dates à l'aide d'un datepicker
+[http://maarekj.github.com/SelectMultiDate/](http://maarekj.github.com/SelectMultiDate/)
 
 Auteur
 ---------------------
