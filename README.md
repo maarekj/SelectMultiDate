@@ -21,7 +21,7 @@ quelques ajouts pour les dates sélectionnées)
 
 Exemples:
 ---------------------
-[Voir un exemple](http://maarekj.github.com/SelectMultiDate/demos)
+[Voir un exemple](http://maarekj.github.com/SelectMultiDate/#exemple1)
 
 Utilisation:
 ---------------------
@@ -36,10 +36,10 @@ Utilisation:
           disabledDayOfWeek:  [0, 6],
           disabledDates:      ['2012-07-14', '2012-08-05']
         })
-        .bind('addedDate', function(e, date) {
+        .on('addedDate', function(e, date) {
           console.log(date);
         })
-        .bind('clear', function(e, date) {
+        .on('clear', function(e, date) {
           console.log(date);
         })
         .selectMultiDate('addDates', ['2012-04-06', '2012-06-19'])
