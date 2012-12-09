@@ -12,7 +12,7 @@ Infomations connexes:
 --------------------------------------------------------------------------------
 Ce plugin utilise est un plugin jQuery (1.7.1). Il utilise le datepicker 
 jQueryUI (1.8.16), et le plugin jquery.textext-1.3.0.
-Ainsi qu'un thême customiser trouver sur le net de jQueryUI (avec
+Ainsi qu'un thême customisé de jQueryUI trouvé sur le net (avec
 quelques ajouts pour les dates sélectionnées)
 
 - [Doc de jQuery](http://docs.jquery.com/Main_Page)
